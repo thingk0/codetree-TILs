@@ -40,13 +40,16 @@ public class Main {
     static int readInt() {
         int input, output = 0;
         try {
-            while ((input = System.in.read()) != -1 && Character.isDigit(input)) {
-                output = (output << 3) + (output << 1) + (input & 15);
+            while ((input = System.in.read()) != -1) {
+                if (Character.isDigit(input)) {
+                    output = (output * 10) + (input - '0');
+                } else {
+                    break;
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return output;
     }
 }
