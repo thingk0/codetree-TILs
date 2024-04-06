@@ -26,7 +26,7 @@ public class Main {
         map = new char[N][M];
         map[r][c] = 'A';
 
-        int start = 1;
+        int start = 0; 
         while (start < N * M) {
 
             int nr = r + dr[dir];
@@ -38,7 +38,8 @@ public class Main {
 
             r = r + dr[dir];
             c = c + dc[dir];
-            map[r][c] = (char) ('A' + start++);
+            map[r][c] = (char) ('A' + (start % 26));
+            start++;
         }
 
         for (char[] row : map) {
