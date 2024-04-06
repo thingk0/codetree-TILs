@@ -5,7 +5,7 @@ import java.util.StringTokenizer;
 public class Main {
 
     static int n, t, r, c, d;
-    static int[] dr = {0, -1, 1, 0};
+    static int[] dr = {0, 1, -1, 0};
     static int[] dc = {1, 0, 0, -1};
 
     static StringTokenizer st;
