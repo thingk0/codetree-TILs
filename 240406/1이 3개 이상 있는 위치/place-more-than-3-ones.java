@@ -38,14 +38,10 @@ public class Main {
     }
 
     static int readInt() {
-        int input, output = 0;
+        int input = 0, output = 0;
         try {
-            while ((input = System.in.read()) != -1) {
-                if (Character.isDigit(input)) {
-                    output = (output * 10) + (input - '0');
-                } else {
-                    break;
-                }
+            while ((input = System.in.read()) != -1 && Character.isDigit(input)) {
+                output = output * 10 + (input - '0');
             }
         } catch (Exception e) {
             e.printStackTrace();
