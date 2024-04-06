@@ -26,7 +26,7 @@ public class Main {
         map = new char[N][M];
         map[r][c] = 'A';
 
-        int start = 0; 
+        int start = 1; 
         while (start < N * M) {
 
             int nr = r + dr[dir];
