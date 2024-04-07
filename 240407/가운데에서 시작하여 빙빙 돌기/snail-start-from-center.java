@@ -31,7 +31,7 @@ public class Main {
                 map[r][c] = ++num;
             }
             dir = (dir + 1) % 4;
-            if (dir == 1 || dir == 3) {
+            if (dir == 0 || dir == 2) {
                 dis++;
             }
         }
