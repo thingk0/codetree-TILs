@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
-        arr = new int[N * 2];
+        arr = new int[2 * N];
 
         StringTokenizer st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N * 2; ++i) {
@@ -20,9 +20,9 @@ public class Main {
         }
 
         Arrays.sort(arr);
-        for (int i = 0, j = 2 * N - 1; i < j; i++, j--) {
-            if (result < arr[i] + arr[j]) {
-                result = arr[i] + arr[j];
+        for (int i = 0; i < N; i++) {
+            if (result < arr[i] + arr[2 * N - i - 1]) {
+                result = arr[i] + arr[2 * N - i - 1];
             }
         }
 
