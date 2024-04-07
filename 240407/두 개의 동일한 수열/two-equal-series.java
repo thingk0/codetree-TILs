@@ -1,34 +1,36 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
-import java.util.Set;
-import java.util.HashSet;
+import java.util.Arrays;
 
 public class Main {
 
-    static Set<Integer> set = new HashSet<>();
-    static StringTokenizer st;
+    static int N;
+    static int[] A, B;
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        N = Integer.parseInt(br.readLine());
+        A = new int[N];
+        B = new int[N];
+
+        StringTokenizer inputA = new StringTokenizer(br.readLine());
+        StringTokenizer inputB = new StringTokenizer(br.readLine());
+
+        for (int i = 0; i < N; i++) {
+            A[i] = Integer.parseInt(inputA.nextToken());
+            B[i] = Integer.parseInt(inputB.nextToken());
+        }
+
+        Arrays.sort(A);
+        Arrays.sort(B);
         
-        // N 생략
-        br.readLine();
-
-        st = new StringTokenizer(br.readLine());
-        while (st.hasMoreTokens()) {
-            set.add(Integer.parseInt(st.nextToken()));
+        for (int i = 0; i < N; i++) {
+            if(A[i] != B[i]) {
+                System.out.print("No");
+                return;
+            }
         }
-
-        st = new StringTokenizer(br.readLine());
-        while (st.hasMoreTokens()) {
-            set.remove(Integer.parseInt(st.nextToken()));
-        }
-
-        if (set.isEmpty()) {
-            System.out.print("Yes");
-        } else {
-            System.out.print("No");
-        }
+        System.out.print("Yes");
     }
 }
