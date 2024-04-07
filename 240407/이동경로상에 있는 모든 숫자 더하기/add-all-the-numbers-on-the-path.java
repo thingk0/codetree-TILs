@@ -40,7 +40,11 @@ public class Main {
         int idx = 0;
         while(idx < T) {
             char cmd = cmdList[idx++];
-            if (cmd == 'F') {
+            if (cmd == 'R') {
+                dir = (dir + 1) % 4;
+            } else if (cmd == 'L') {
+                dir = (dir + 3) % 4;
+            } else if (cmd == 'F') {
                 tr = r + dr[dir];
                 tc = c + dc[dir];
                 if (!inRange(tr, tc)) {
@@ -49,10 +53,6 @@ public class Main {
                 r = tr;
                 c = tc;
                 result += map[r][c];
-            } else if (cmd == 'R') {
-                dir = (dir + 1) % 4;
-            } else if (cmd == 'L') {
-                dir = (dir + 3) % 4;
             }
         }
 
