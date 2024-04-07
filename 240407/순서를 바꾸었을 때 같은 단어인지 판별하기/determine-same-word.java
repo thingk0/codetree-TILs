@@ -11,6 +11,11 @@ public class Main {
         Arrays.sort(input1);
         Arrays.sort(input2);
 
+        if (input1.length != input2.length) {
+            System.out.print("No");
+            return;
+        }
+
         for (int i = 0; i < input1.length; i++) {
             if (input1[i] != input2[i]) {
                 System.out.print("No");
