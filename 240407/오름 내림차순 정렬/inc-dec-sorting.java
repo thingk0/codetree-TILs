@@ -26,12 +26,13 @@ public class Main {
         }
         result.append('\n');
 
-        int[] reversedArr = Arrays.stream(arr)
-                                    .boxed()
-                                    .sorted(Collections.reverseOrder())
-                                    .mapToInt(Integer::intValue)
-                                    .toArray();
-        for (int e : reversedArr) {
+        for(int i = 0; i < N / 2; i++) {
+            int temp = arr[i];
+            arr[i] = arr[N - i - 1];
+            arr[N - i - 1] = temp;
+        }
+
+        for (int e : arr) {
             result.append(e).append(' ');
         }
         result.append('\n');
