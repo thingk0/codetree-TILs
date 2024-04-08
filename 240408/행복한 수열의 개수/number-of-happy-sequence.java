@@ -6,7 +6,21 @@ public class Main {
 
     static int N, M, result = 0;
     static int[][] map;
+    static int[] seq;
     static StringTokenizer st;
+
+    static boolean isHappySeq() {
+        int cnt = 1, maxCnt = 1;
+        for (int i = 1; i < N; i++) {
+            if (seq[i] == seq[i-1]) {
+                cnt++;
+            } else {
+                cnt = 1;
+            }
+            maxCnt = Math.max(maxCnt, cnt);
+        }
+        return maxCnt >= M;
+    }
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -15,6 +29,8 @@ public class Main {
         M = Integer.parseInt(st.nextToken());
 
         map = new int[N][N];
+        seq = new int[N];
+        
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
             for (int j = 0; j < N; j++) {
@@ -23,47 +39,25 @@ public class Main {
         }
 
         for (int i = 0; i < N; i++) {
-            checkRow(i);
-            checkColumn(i);
+            for (int j = 0; j < N; j++) {
+                seq[j] = map[i][j];
+            }
+
+            if(isHappySeq()) {
+                result++;
+            }
+        }
+
+        for (int j = 0; j < N; j++) {
+            for (int i = 0; i < N; i++) {
+                seq[i] = map[i][j];
+            }
+
+            if(isHappySeq()) {
+                result++;
+            }
         }
 
         System.out.print(result);
-    }
-
-
-    static void checkRow(int row) {
-        int count = 1;
-        for (int i = 1; i < N; i++) {
-            if (map[row][i] == map[row][i - 1]) {
-                count++;
-            } else {
-                if (count >= M) {
-                    result++;
-                    break;
-                }
-                count = 1;
-            }
-        }
-        if (count >= M) {
-            result++;
-        }
-    }
-
-    static void checkColumn(int column) {
-        int count = 1;
-        for (int i = 1; i < N; i++) {
-            if (map[i][column] == map[i - 1][column]) {
-                count++;
-            } else {
-                if (count >= M) {
-                    result++;
-                    break;
-                }
-                count = 1;
-            }
-        }
-        if (count >= M) {
-            result++;
-        }
     }
 }
