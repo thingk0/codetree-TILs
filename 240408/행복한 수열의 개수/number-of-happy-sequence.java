@@ -36,13 +36,16 @@ public class Main {
         for (int i = 1; i < N; i++) {
             if (map[row][i] == map[row][i - 1]) {
                 count++;
+            } else {
                 if (count >= M) {
                     result++;
                     break;
                 }
-            } else {
                 count = 1;
             }
+        }
+        if (count >= M) {
+            result++;
         }
     }
 
@@ -51,13 +54,16 @@ public class Main {
         for (int i = 1; i < N; i++) {
             if (map[i][column] == map[i - 1][column]) {
                 count++;
+            } else {
                 if (count >= M) {
                     result++;
                     break;
                 }
-            } else {
                 count = 1;
             }
+        }
+        if (count >= M) {
+            result++;
         }
     }
 }
