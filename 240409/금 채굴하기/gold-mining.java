@@ -11,32 +11,31 @@ public class Main {
     static StringTokenizer st;
 
     static int simulate(int r, int c) {
-        int maxGold = 0; 
+        int maxGold = grid[r][c]; 
+        int totalGold = grid[r][c]; 
 
-        for (int k = 0; k <= 2 * (N - 1); k++) {
-            int goldCount = 0; 
+        for (int k = 1; k <= 2 * (N - 1); k++) {
+            int goldCount = 0;
             int operationCost = k * k + (k + 1) * (k + 1);
-
-            // 마름모 영역 내 금 계산
-            int nr = r - k, nc = c; 
+            int nr = r - k, nc = c;
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < k; j++) {
-                    if (inRange(nr, nc)) {
-                        goldCount += grid[nr][nc]; // 금 개수 추가
-                    }
                     nr += dr[i];
                     nc += dc[i];
+                    if (inRange(nr, nc)) {
+                        goldCount += grid[nr][nc];
+                    }
                 }
             }
-
-            // 수익성 검사: 총 금 가치(m * 금 개수) >= 운영 비용
-            if (goldCount * M >= operationCost) {
-                maxGold = Math.max(maxGold, goldCount); 
+            totalGold += goldCount;
+            if (totalGold * M >= operationCost) {
+                maxGold = Math.max(maxGold, totalGold);
             }
         }
 
         return maxGold;
     }
+
 
     static boolean inRange(int r, int c) {
         return 0 <= r && r < N && 0 <= c && c < N;
