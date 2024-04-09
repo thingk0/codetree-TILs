@@ -10,15 +10,16 @@ public class Main {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
-        int max = Integer.MIN_VALUE;
-
         while (N-- > 0) {
             String color = br.readLine();
-            int count = map.getOrDefault(color, 0) + 1;
-            map.put(color, count);
-            max = Math.max(max, count);
+            map.put(color, map.getOrDefault(color, 0) + 1);
         }
 
+        int max = Integer.MIN_VALUE;
+        for (int cnt : map.values()) {
+            max = max < cnt ? cnt : max;
+        }
+        
         System.out.print(max);
     }
 }
