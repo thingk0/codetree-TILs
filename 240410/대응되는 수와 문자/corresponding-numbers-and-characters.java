@@ -34,12 +34,10 @@ public class Main {
                 int num = Integer.parseInt(find);
                 result.append(list[num]).append('\n');
                 continue;
-            } catch (NumberFormatException e) {
-                e.printStackTrace();
-            }
+            } catch (NumberFormatException e) {}
             result.append(map.get(find)).append('\n');
         }
-        
+
         System.out.print(result);
     }
 }
