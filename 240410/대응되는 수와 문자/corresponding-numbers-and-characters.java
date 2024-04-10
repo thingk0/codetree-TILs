@@ -12,6 +12,10 @@ public class Main {
     static StringTokenizer st;
     static StringBuilder result = new StringBuilder();
 
+    static boolean isNumeric(String str) {
+        return str.matches("^\\d+$");
+    }
+
     public static void main(String[] args) throws Exception {
         
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -30,12 +34,11 @@ public class Main {
 
         for (int i = 0; i < M; i++) {
             String find = br.readLine();
-            try {
-                int num = Integer.parseInt(find);
-                result.append(list[num]).append('\n');
-                continue;
-            } catch (NumberFormatException e) {}
-            result.append(map.get(find)).append('\n');
+            if (isNumeric(find)) {
+                result.append(list[Integer.parseInt(find)]).append('\n');
+            } else {
+                result.append(map.get(find)).append('\n');
+            }
         }
 
         System.out.print(result);
