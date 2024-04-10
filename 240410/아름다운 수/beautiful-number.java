@@ -1,41 +1,47 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main {
-    static int N, result = 0;
+    public static int n;
+    public static int ans;
+    public static ArrayList<Integer> seq = new ArrayList<>();
+    
+    public static boolean isBeautiful() {
+        for(int i = 0; i < n; i += seq.get(i)) {
 
-    static boolean isBeautiful(int[] arr) {
-        int count = 1;
-        for (int i = 1; i < N; i++) {
-            if (arr[i] == arr[i - 1]) {
-                count++;
-            } else {
-                if (count != arr[i - 1]) {
+            if(i + seq.get(i) - 1 >= n) {
+                return false;
+            }
+
+            for(int j = i; j < i + seq.get(i); j++) {
+                if(seq.get(j) != seq.get(i)) {
                     return false;
                 }
-                count = 1;
             }
         }
-        return count == arr[N - 1];
-    }
 
-    static void permu(int[] arr, int size) {
-        if (size == N) {
-            if (isBeautiful(arr)) {
-                result++;
-            }
+        return true;
+    }
+    
+    public static void cntBeautySequence(int cnt) {
+        
+        if(cnt == n) {
+            if(isBeautiful())
+                ans++;
             return;
         }
-        for (int i = 1; i <= 4; i++) {
-            arr[size] = i;
-            permu(arr, size + 1);
+        
+        for(int i = 1; i <= 4; i++) {
+            seq.add(i);
+            cntBeautySequence(cnt + 1);
+            seq.remove(seq.size() - 1);
         }
     }
+    
 
-    public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        N = Integer.parseInt(br.readLine());
-        permu(new int[N], 0);
-        System.out.print(result);
+    public static void main(String[] args) {
+        n = new Scanner(System.in).nextInt();
+        cntBeautySequence(0);
+        System.out.print(ans);
     }
 }
