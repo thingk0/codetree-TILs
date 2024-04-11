@@ -35,7 +35,7 @@ public class Main {
     }
 
     static void comb(int[] selectedIdx, int level, int start) {
-        if (level == N) {
+        if (level == 3) {
             if (isVerify(selectedIdx)){
                 result++;
             }
