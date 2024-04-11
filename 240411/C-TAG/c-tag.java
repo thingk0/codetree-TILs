@@ -65,7 +65,7 @@ public class Main {
             B[i] = br.readLine();
         }
 
-        comb(new int[N], 0, 0);
+        comb(new int[3], 0, 0);
         System.out.print(result);
     }
 }
