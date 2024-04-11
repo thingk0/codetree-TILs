@@ -37,16 +37,20 @@ public class Main {
         }
 
         for (int i = 0; i < 3; i++) {
-            for (int[] ch : changeArr) {                
+            for (int[] ch : changeArr) {
+
                 int li = ch[0];
                 int ri = ch[1];
 
-                int temp = arr[li];
-                arr[li] = arr[ri];
-                arr[ri] = temp;
+                int le = arr[li];
+                int re = arr[ri];
 
-                list.get(arr[li]).add(ri);
-                list.get(arr[ri]).add(li);
+                arr[li] = re;
+                arr[ri] = le;
+
+                list.get(le).add(ri);
+                list.get(re).add(li);
+
             }
         }
 
