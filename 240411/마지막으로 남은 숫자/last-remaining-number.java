@@ -28,6 +28,6 @@ public class Main {
             pq.add(Math.abs(num1 - num2));
         }
 
-        System.out.print(pq.peek());
+        System.out.print(pq.isEmpty() ? -1 : pq.peek());
     }
 }
