@@ -5,9 +5,9 @@ import java.util.StringTokenizer;
 
 public class Main {
 
-    static int N;
+    static int N, sum = 0;
     static int[] arr;
-    static double max = 0.0;
+    static double maxAvg = 0.0;
     static StringTokenizer st;
     static PriorityQueue<Integer> pq = new PriorityQueue<>();
 
@@ -20,28 +20,16 @@ public class Main {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
-        for (int k = 1; k <= N - 2; k++) {
-            for (int l = k; l < N; l++) {
-                pq.add(arr[l]);
-            }
+        pq.add(arr[N - 1]);
+        sum += arr[N - 1];
 
-            pq.poll();
+        for (int k = N - 2; k >= 1; k--) {
+            pq.add(arr[k]);
+            sum += arr[k];
 
-            if (k == N - 2) {
-                max = Math.max(max, pq.poll() * 1.0);
-                continue;
-            }
-
-            double sum = 0.0;
-            int size = pq.size();
-            while (!pq.isEmpty()) {
-                sum += pq.poll();
-            }
-
-            sum /= size;
-            max = Math.max(max, sum);
+            maxAvg = Math.max(maxAvg, (sum * 1.0 - pq.peek()) / (N - k - 1));
         }
 
-        System.out.printf("%.2f", max);
+        System.out.printf("%.2f", maxAvg);
     }
 }
