@@ -62,10 +62,9 @@ public class Main {
         }
 
         HashSet<Integer> set = new HashSet<>();
-        for (int num : parent) {
-            set.add(num);
+        for (int i = 1; i <= N; i++) {
+            set.add(find(i));
         }
-
-        System.out.print(set.size() - 1);
+        System.out.print(set.size());
     }
 }
