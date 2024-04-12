@@ -13,11 +13,10 @@ public class Main {
     static StringTokenizer st;
 
     static int find(int num) {
-        if (num == parent[num]) {
-            return num;
+        if (parent[num] != num) {
+            parent[num] = find(parent[num]);
         }
-
-        return parent[num] = find(parent[num]);
+        return parent[num];
     }
 
     static boolean union(int a, int b) {
