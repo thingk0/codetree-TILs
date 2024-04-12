@@ -1,70 +1,51 @@
+import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
-import java.util.ArrayList;
-import java.util.HashSet;
-
+import java.util.StringTokenizer;;
 
 public class Main {
 
-    static int N, M;
-    static int[] parent;
-    static int[] rank;
+    static int n, m;
     static StringTokenizer st;
+    static ArrayList<Integer>[] adjList;
+    static boolean[] visited;
+    static int vertexCnt = 0;
 
-    static int find(int num) {
-        if (parent[num] != num) {
-            parent[num] = find(parent[num]);
-        }
-        return parent[num];
-    }
-
-    static boolean union(int a, int b) {
-        
-        int aRoot = find(a);
-        int bRoot = find(b);
-
-        if (aRoot == bRoot) {
-            return false;
-        }
-
-        if (rank[aRoot] <= rank[bRoot]) {
-            parent[aRoot] = bRoot;
-            if (rank[aRoot] == rank[bRoot]) {
-                rank[bRoot]++;
+    public static void DFS(int vertex) {
+        for(int i = 0; i < adjList[vertex].size(); i++) {
+            int currV = adjList[vertex].get(i);
+            if(!visited[currV]) {
+                visited[currV] = true;
+                vertexCnt++;
+                DFS(currV);
             }
-        } else {
-            parent[bRoot] = parent[aRoot];
         }
-        return true;
     }
 
     public static void main(String[] args) throws Exception {
-        
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         st = new StringTokenizer(br.readLine());
-        
-        N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
+        n = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
 
-        rank = new int[N + 1];
-        parent = new int[N + 1];
-
-        for (int i = 1; i <= N; i++) {
-            parent[i] = i;
+        adjList = new ArrayList[n + 1];
+        visited = new boolean[n + 1];
+        for(int i = 1; i <= n; i++) {
+            adjList[i] = new ArrayList<>();
         }
 
-        for (int i = 0; i < M; i++) {
+        while(m-- > 0) {
             st = new StringTokenizer(br.readLine());
-            int a = Integer.parseInt(st.nextToken());
-            int b = Integer.parseInt(st.nextToken());
-            union(a, b);
+            int v1 = Integer.parseInt(st.nextToken());
+            int v2 = Integer.parseInt(st.nextToken());
+            adjList[v1].add(v2);
+            adjList[v2].add(v1);
         }
 
-        HashSet<Integer> set = new HashSet<>();
-        for (int i = 1; i <= N; i++) {
-            set.add(find(i));
-        }
-        System.out.print(set.size());
+        visited[1] = true;
+        DFS(1);
+        
+        System.out.println(vertexCnt);
     }
 }
