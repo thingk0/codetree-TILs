@@ -4,8 +4,8 @@ import java.util.StringTokenizer;
 
 public class Main {
 
-    static int N, M, result = 0;
-    static int[] nums;
+    static int N, M, maximumXOR = 0;
+    static int[] elements;
     static StringTokenizer st;
 
     public static void main(String[] args) throws Exception {
@@ -14,29 +14,29 @@ public class Main {
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
 
-        nums = new int[N];
+        elements = new int[N];
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
-            nums[i] = Integer.parseInt(st.nextToken());
+            elements[i] = Integer.parseInt(st.nextToken());
         }
 
-        comb(new int[M], 0, 0);
-        System.out.print(result);
+        findCombinations(new int[M], 0, 0);
+        System.out.print(maximumXOR);
     }
 
-    static void comb(int[] selected, int level, int start) {
-        if (level == M) {
+    static void findCombinations(int[] selectedIndices, int depth, int startIndex) {
+        if (depth == M) {
             int xor = 0;
-            for (int i : selected) {
-                xor ^= nums[i];
+            for (int index : selectedIndices) {
+                xor ^= elements[index];
             }
-            result = Math.max(result, xor);
+            maximumXOR = Math.max(maximumXOR, xor);
             return;
         }
 
-        for (int i = start; i < N; i++) {
-            selected[level] = i;
-            comb(selected, level + 1, i + 1);
+        for (int i = startIndex; i < N; i++) {
+            selectedIndices[depth] = i;
+            findCombinations(selectedIndices, depth + 1, i + 1);
         }
     }
 }
