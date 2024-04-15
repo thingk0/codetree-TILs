@@ -11,7 +11,7 @@ dir = 0
 cmd = input()
 for c in cmd:
     if c == 'L':
-        dir = (dir - 1) % 4
+        dir = (dir + 3) % 4
     elif c == 'R':
         dir = (dir + 1) % 4
     elif c == 'F':  
