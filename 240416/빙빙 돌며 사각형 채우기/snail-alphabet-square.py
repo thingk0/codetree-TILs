@@ -14,7 +14,7 @@ grid[r][c] = 'A'
 def in_range(r, c):
     return 0 <= r < N and 0 <= c < M
 
-for ch in range(ord('B'), ord('A') + (N * M)):
+for ch in range(66, 65 + (N * M)):
 
     nr = r + dr[dir_num]
     nc = c + dc[dir_num]
