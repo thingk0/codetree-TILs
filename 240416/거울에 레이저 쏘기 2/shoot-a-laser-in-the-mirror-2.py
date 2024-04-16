@@ -38,4 +38,5 @@ while in_range(r, c):
     c += dc[dir_num]
     cnt += 1
 
+
 print(cnt)
