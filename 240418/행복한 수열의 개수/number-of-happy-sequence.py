@@ -14,7 +14,7 @@ def is_happy_seq(seq):
             continuous_seq_cnt = 1 
         max_seq_cnt = max(max_seq_cnt, continuous_seq_cnt)
 
-    return continuous_seq_cnt >= M
+    return max_seq_cnt >= M
 
 res = 0
 for i in range(N):
