@@ -1,0 +1,1 @@
+print("code : {}\ncolor : {}\nsecond : {}".format(*input().split()))
