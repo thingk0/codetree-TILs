@@ -1,8 +1,16 @@
+class Student:
+    def __init__(self, n, a, b, c):
+        self.n = n
+        self.a = a
+        self.b = b
+        self.c = c
+
 N = int(input())
 students = []
 for _ in range(N):
-    students.append(tuple(input().split()))
+    n, a, b, c = input().split()
+    students.append(Student(n, int(a), int(b), int(c)))
 
-students.sort(key = lambda s: (int(s[1]) + int(s[2]) + int(s[3])))
+students.sort(key = lambda s: (s.a + s.b +s.c))
 for s in students:
-    print(s[0], s[1], s[2], s[3])
+    print(s.n, s.a, s.b, s.c)
