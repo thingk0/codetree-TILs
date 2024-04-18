@@ -21,11 +21,6 @@ shape = [
         [0, 0, 0],
     ],
     [
-        [1, 1, 0],
-        [1, 0, 0],
-        [0, 0, 0],
-    ],
-    [
         [1, 1, 1],
         [0, 0, 0],
         [0, 0, 0],
@@ -55,8 +50,8 @@ def get_max_sum(r, c):
                     continue
                 if not in_range(r + dr, c + dc):
                     is_possible = False
-                    continue
-                sum_max += (grid[r + dr][c + dc])
+                else:
+                    sum_max += (grid[r + dr][c + dc])
 
         if is_possible:
             total_max = max(total_max, sum_max)
