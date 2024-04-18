@@ -41,17 +41,20 @@ def in_range(r, c):
 
 def get_max_sum(r, c):
     total_max = 0
-    for i in range(6):
+    for shape_idx in range(6):
         sum_max = 0
         is_possible = True
         for dr in range(3):
             for dc in range(3):
-                if shape[i][dr][dc] == 0:
+                nr, nc = r + dr, c + dc
+                if shape[shape_idx][dr][dc] == 0:
                     continue
-                if not in_range(r + dr, c + dc):
+                if not in_range(nr, nc):
                     is_possible = False
-                else:
-                    sum_max += (grid[r + dr][c + dc])
+                    break
+                sum_max += grid[nr][nc]
+            if not is_possible:
+                break
 
         if is_possible:
             total_max = max(total_max, sum_max)
