@@ -40,19 +40,28 @@ def in_range(r, c):
     return 0 <= r < N and 0 <= c < M
 
 def get_max_sum(r, c):
-    total_max = 0
+    
+    total_max = 0 
+
     for shape_idx in range(6):
+
         sum_max = 0
         is_possible = True
+
         for dr in range(3):
             for dc in range(3):
-                nr, nc = r + dr, c + dc
+                
                 if shape[shape_idx][dr][dc] == 0:
                     continue
+
+                nr, nc = r + dr, c + dc
+
                 if not in_range(nr, nc):
                     is_possible = False
                     break
+
                 sum_max += grid[nr][nc]
+
             if not is_possible:
                 break
 
