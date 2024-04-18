@@ -56,7 +56,7 @@ def get_max_sum(r, c):
                 if not in_range(r + dr, c + dc):
                     is_possible = False
                     continue
-                sum_max += (grid[r][c] * shape[i][dr][dc])
+                sum_max += (grid[r + dr][c + dc])
 
         if is_possible:
             total_max = max(total_max, sum_max)
