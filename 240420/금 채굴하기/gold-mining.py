@@ -35,7 +35,7 @@ for r in range(N):
         gold_cnt = 0
         for k in range(2 * (N - 1) + 1):
             gold_cnt += get_gold_count(r, c, k)
-            if gold_cnt * M > mining_costs(k):
+            if gold_cnt * M >= mining_costs(k):
                 res = max(res, gold_cnt)
 
 print(res)
