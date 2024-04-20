@@ -22,10 +22,10 @@ def get_gold_count(r, c, k):
 
     for dr, dc in zip(drs, dcs):
         for dis in range(k):
-            nr += dr
-            nc += dc
             if (in_range(nr, nc)):
                 gold_cnt += grid[nr][nc]
+            nr += dr
+            nc += dc
 
     return gold_cnt
 
