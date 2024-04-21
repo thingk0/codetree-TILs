@@ -1,17 +1,22 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
 
 public class Main {
 
     static List<List<Integer>> graph;
     static boolean[] visited;
-    static int result = 0;
+    static int result = 0, N, M;
+    static StringTokenizer st;
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int N = scanner.nextInt();
-        int M = scanner.nextInt();
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        st = new StringTokenizer(br.readLine());
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
 
         visited = new boolean[N + 1];
         graph = new ArrayList<>(N + 1);
@@ -20,8 +25,9 @@ public class Main {
         }
 
         for (int i = 0; i < M; i++) {
-            int v1 = scanner.nextInt();
-            int v2 = scanner.nextInt();
+            st = new StringTokenizer(br.readLine());
+            int v1 = Integer.parseInt(st.nextToken()); 
+            int v2 = Integer.parseInt(st.nextToken());
             graph.get(v1).add(v2);
             graph.get(v2).add(v1);
         }
