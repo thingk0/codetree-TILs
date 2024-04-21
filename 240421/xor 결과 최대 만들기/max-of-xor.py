@@ -13,7 +13,7 @@ def comb(idx, depth):
         res = max(res, xor_sum)
         return
 
-    for i in range(N):
+    for i in range(idx, N):
         selected.append(arr[i])
         comb(i + 1, depth + 1)
         selected.pop()
