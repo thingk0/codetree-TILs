@@ -1,28 +1,25 @@
 N, M = map(int, input().split())
-graph = [tuple(map(int, input().split())) for _ in range(M)]
 
-root = [n for n in range(N + 1)]
-rank = [1] * (N + 1)
+graph = [[] for _ in range(N + 1)]
+visited = [False for _ in range(N + 1)]
 
-def find(x):
-    if root[x] != x:
-        root[x] = find(root[x])
-    return root[x]
+res = 0
 
-def union(x, y):
-    rootX = find(x)
-    rootY = find(y)
-    if rootX != rootY:
-        if rank[rootX] > rank[rootY]:
-            root[rootY] = rootX
-        elif rank[rootX] < rank[rootY]:
-            root[rootX] = rootY
-        else:
-            root[rootY] = rootX
-            rank[rootX] += 1
+def dfs(v):
+    global res
 
-for (x, y) in graph:
-    union(x, y)
+    for cur_v in graph[v]:
+        if not visited[cur_v]:
+            visited[cur_v] = True
+            res += 1
+            dfs(cur_v)
 
-final_roots = [find(i) for i in range(1, N + 1)]
-print(len(set(final_roots)))
+for i in range(M):
+    v1, v2 = map(int, input().split())
+    graph[v1].append(v2)
+    graph[v2].append(v1)
+
+visited[1] = True
+dfs(1)
+
+print(res)
