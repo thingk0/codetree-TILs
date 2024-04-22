@@ -24,7 +24,7 @@ def move(r = 0, c = 0):
         nc = c + dc
         
         # 범위를 벗어나거나, 이미 방문했거나, 뱀이 있다면
-        if not in_range(nr, nc) or vistied[nr][nc] or grid[nr][nc] == 0:
+        if not in_range(nr, nc) or vistied[nr][nc] or not grid[nr][nc]:
             continue
 
         vistied[nr][nc] = 1
