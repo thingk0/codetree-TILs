@@ -8,8 +8,10 @@ int main() {
 
     if (n >= 3000) {
         cout << "book";
-    } else {
+    } else if (n >= 1000) {
         cout << "mask";
+    } else {
+        cout << "no";
     }
     return 0;
 }
