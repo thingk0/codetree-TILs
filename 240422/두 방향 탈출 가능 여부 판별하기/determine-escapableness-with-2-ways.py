@@ -6,7 +6,7 @@ grid = [
 ]
 
 vistied = [
-    ([0] * N)
+    ([0] * M)
     for _ in range(N)
 ]
 
