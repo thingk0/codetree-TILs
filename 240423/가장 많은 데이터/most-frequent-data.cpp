@@ -1,20 +1,19 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
-
-using namespace std;
-
-int n, res = 0;
-string s;
-unordered_map<string, int> map;
+#include <algorithm>
 
 int main() {
-    cin >> n;
+    int n, res = 0;
+    std::string s;
+    std::unordered_map<std::string, int> map;
+
+    std::cin >> n;
     for (int i = 0; i < n; i++) {
-        cin >> s;
+        std::cin >> s;
         map[s]++;
-        res = map[s] > res ? map[s] : res;
+        res = std::max(res, map[s]);
     }
-    cout << res;
+    std::cout << res;
     return 0;
 }
