@@ -1,18 +1,18 @@
-class Node:    
+class Node:
     def __init__(self, id):
         self.id = id
         self.prev = None
         self.next = None
 
-def insert_prev(u, singleton):
-    singleton.prev = u.next
+def insertPrev(u, singleton):
+    singleton.prev = u.prev
     singleton.next = u
     if singleton.prev is not None:
         singleton.prev.next = singleton
     if singleton.next is not None:
         singleton.next.prev = singleton
 
-def insert_next(u, singleton):
+def insertNext(u, singleton):
     singleton.prev = u
     singleton.next = u.next
     if singleton.prev is not None:
@@ -30,7 +30,7 @@ def pop(u):
 n = int(input())
 q = int(input())
 
-nodes = [None] + [Node(i) for i in range(1, n + 1)]
+nodes = [None] + [Node(i) for i in range(1, n+1)]
 
 for _ in range(q):
     inputs = list(map(int, input().split()))
