@@ -40,10 +40,10 @@ for _ in range(q):
         pop(nodes[i])
     elif option == 2:
         j = inputs[2]
-        insert_prev(nodes[i], nodes[j])
+        insertPrev(nodes[i], nodes[j])
     elif option == 3:
         j = inputs[2]
-        insert_next(nodes[i], nodes[j])
+        insertNext(nodes[i], nodes[j])
     elif option == 4:
         print((0 if nodes[i].prev is None else nodes[i].prev.id), (0 if nodes[i].next is None else nodes[i].next.id))
 
