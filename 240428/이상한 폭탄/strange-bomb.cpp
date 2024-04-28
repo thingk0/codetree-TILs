@@ -13,8 +13,8 @@ int main() {
     cin >> n >> k;
     for (int i = 0; i < n; i++) {
         cin >> t;
-        if (ldx.find(t) != ldx.end() && i - ldx[t] <= t) {
-            res = max(res, t);
+        if (ldx.find(t) != ldx.end() && i - ldx[t] <= k && res < t) {
+            res = t;
         }
         ldx[t] = i;
     }
