@@ -46,6 +46,5 @@ int main() {
 	cout << res;
 
 	delete[] arr;
-	arr = nullptr;
 	return 0;
 }
