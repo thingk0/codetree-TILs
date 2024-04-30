@@ -44,5 +44,9 @@ int main() {
 	count_beautiful_seq(0, arr);
 
 	cout << res;
+
+	delete[] arr;
+	arr = nullptr;
+	
 	return 0;
 }
