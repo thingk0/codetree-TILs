@@ -23,7 +23,7 @@ for r in range(row - explosive_range, row + explosive_range + 1):
 
 # 열 마다 재배치
 for c in range(n):
-    tmp = [grid[r][c] for r in range(n) if grid[r][c] != 0]
+    tmp = [row[c] for row in grid if row[c]]
     tmp = [0] * (n - len(tmp)) + tmp
     for r in range(n):
         grid[r][c] = tmp[r]
