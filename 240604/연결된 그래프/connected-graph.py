@@ -28,4 +28,5 @@ for _ in range(m):
     a, b = map(int, input().split())
     union(a, b)
 
-print(sum(1 for i in range(1, n + 1) if find(i) == 1) - 1)
+root_of_1 = find(1)
+print(sum(1 for i in range(1, n + 1) if find(i) == root_of_1) - 1)
