@@ -1,8 +1,10 @@
+import sys
+
 n = int(input())
 
 closet = {}
 for _ in range(n):
-    _, category = input().split()
+    _, category = sys.stdin.readline().rstrip().split()
     closet[category] = closet.get(category, 0) + 1
 
 res = 1
