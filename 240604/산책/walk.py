@@ -4,7 +4,7 @@ n = int(input())
 
 closet = {}
 for _ in range(n):
-    _, category = sys.stdin.readline().rstrip().split()
+    _, category = sys.stdin.readline().split()
     closet[category] = closet.get(category, 0) + 1
 
 res = 1
