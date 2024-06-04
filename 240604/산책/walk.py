@@ -1,10 +1,13 @@
 import sys
 
-n = int(sys.stdin.readline())
+def _input():
+    return sys.stdin.readline()
+
+n = int(_input())
 
 closet = {}
 for _ in range(n):
-    _, category = sys.stdin.readline().split()
+    _, category = _input().split()
     closet[category] = closet.get(category, 0) + 1
 
 res = 1
