@@ -1,8 +1,16 @@
 import sys
 
-m = int(sys.stdin.readline())
-n = int(sys.stdin.readline())
+std = sys.stdin
 
-nums = set(map(int, sys.stdin.readline().split()))
-cnt = sum((m - num) in nums for num in nums)
+n = int(std.readline())
+m = int(std.readline())
+
+cnt = 0
+nums = {}
+
+for num in map(int, list(std.readline().split())):
+    if (m - num) in nums:
+        cnt += nums.get(m - num)
+    nums[num] = nums.get(num, 0) + 1
+
 print(cnt)
