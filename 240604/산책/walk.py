@@ -1,6 +1,6 @@
 import sys
 
-n = int(input())
+n = int(sys.stdin.readline())
 
 closet = {}
 for _ in range(n):
