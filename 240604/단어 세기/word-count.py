@@ -1,12 +1,13 @@
-_dict = {}
+from collections import Counter
+
+freq = Counter()
 while True:
-    _input = input()
-
-    if _input == 'end':
-        break
-
-    for ch in list(_input.split()):
-        _dict[ch] = _dict.get(ch, 0) + 1
+    ipt = input()
     
-    for k, v in _dict.items():
-        print(k, ':', v)
+    if ipt == 'end':
+        break
+    
+    freq.update(ipt.split())
+    
+    for ch, cnt in freq.items():
+        print(f"{ch} : {cnt}")
