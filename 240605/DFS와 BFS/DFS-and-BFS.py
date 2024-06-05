@@ -11,7 +11,6 @@ for _ in range(m):
     graph[a].append(b)
     graph[b].append(a)
 
-# 인접 리스트를 정렬하여 방문 순서를 정렬된 순서로 유지
 for nodes in graph.values():
     nodes.sort()
 
